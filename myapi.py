@@ -6,7 +6,7 @@ PUT- UPDATE
 DELETE- DELETE SOMETHING 
 '''
 from fastapi import FastAPI, Path
-
+from typing import Optional
 app=FastAPI()
 
 student ={
@@ -26,8 +26,8 @@ def index():
 def get_student(student_id: int=Path(...,description="The Id of the student you wanna view"),gt=0,lt=3):
     return student[student_id]
 
-@app.get("/get-by-name?name=bibek")
-def get_student(name: str):
+@app.get("/get-by-name")
+def get_student(*, name: Optional[str]=None,test : int):
     for student_id in student:
         if student[student_id]["name"]==name:
             return student[student_id]

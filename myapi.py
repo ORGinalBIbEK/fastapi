@@ -24,6 +24,11 @@ class Student(BaseModel):
     age:int
     year: int
 
+class UpdateStudent(BaseModel):
+    name:Optional[str]=None
+    age:Optional[int]=None
+    year:Optional[int]=None
+
 @app.get("/")
 def index():
     return {"name":"FIRST DATA"}
@@ -47,4 +52,21 @@ def create_student(student_id: int, student_data: Student): # Renamed parameter
     
     # .model_dump() converts the Pydantic object back into a standard Python dict
     student_db[student_id] = student_data.model_dump()
+    return student_db[student_id]
+
+@app.put("/update-student/{student_id}")
+def update_student(student_id: int, student_data: UpdateStudent):
+    # 1. Check the actual global database
+    if student_id not in student_db:
+        return {"Error": "Student does not exist"}
+
+    if student_data.name is not None:
+        student_db[student_id]["name"] = student_data.name
+
+    if student_data.age is not None:
+        student_db[student_id]["age"] = student_data.age
+
+    if student_data.year is not None:
+        student_db[student_id]["year"] = student_data.year
+        
     return student_db[student_id]

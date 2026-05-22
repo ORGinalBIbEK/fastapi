@@ -37,8 +37,22 @@ print("\nName and Age:")
 for student in name_age:
     print(student)
 
-#third query
+#updating query
+# updating query
+print("updated list")
+c.execute("""
+UPDATE students
+SET name='Achyut'
+WHERE age=22
+""")
+c.execute("SELECT * FROM students")
 
+updated_students = c.fetchall()
 
+print("\n")
+for updated_students in updated_students:
+    print(updated_students)
+
+conn.commit()
 #close
 conn.close()

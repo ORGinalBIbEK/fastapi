@@ -9,7 +9,7 @@ c.execute("SELECT * FROM students")
 #c.fetchone()
 #c.fetchmany()
 #c.fetchall()
-print(c.fetchall())
+print(c.fetchone()[3])
 
 conn.commit()
 

@@ -52,7 +52,22 @@ updated_students = c.fetchall()
 print("\n")
 for updated_students in updated_students:
     print(updated_students)
+conn.commit()
+print("\n")
+##updating a name from sam to abiskar
+print("\nupdate the name from sam to abiskar")
+
+c.execute("""
+UPDATE students
+SET name='abiskar'
+WHERE rowid=3
+""")
 
 conn.commit()
-#close
-conn.close()
+
+c.execute("SELECT * FROM students")
+updated2_students = c.fetchall()
+
+print("\n")
+for student in updated2_students:
+    print(student)

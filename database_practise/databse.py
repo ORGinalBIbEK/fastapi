@@ -15,7 +15,7 @@ c=conn.cursor()
 )""")'''
 #NUL,INTERGER,REAL(DECIMAL),TEXT,BLOBL(IMAGES,MP3)
 #commit our commit
-c.execute("INSERT INTO students VALUES (01, 'John', 20, 2021)")
+c.execute("INSERT INTO students VALUES (2, 'John', 20, 2021)")
 conn.commit()
 
 #close

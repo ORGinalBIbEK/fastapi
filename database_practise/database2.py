@@ -18,12 +18,25 @@ c.executemany("INSERT OR IGNORE INTO students VALUES (?,?,?,?)",many_student)
 print("command executed succesfully")
 
 conn.commit()
-c.execute("SELECT * FROM students WHERE age>18")
- # 1. Renamed to 'all_students' so we don't overwrite Python's built-in keywords
-all_students = c.fetchall()
 
-print("\n--- Printing whole tuples ---")
-for all_students in all_students:   
-    print(all_students)
+# First query
+c.execute("SELECT * FROM students WHERE age > 18")
+
+adult_students = c.fetchall()
+
+print("\nStudents age > 18:")
+for student in adult_students:
+    print(student)
+
+# Second query
+c.execute("SELECT * FROM students WHERE name LIKE '%am' ")
+
+name_age = c.fetchall()
+
+print("\nName and Age:")
+for student in name_age:
+    print(student)
+
+
 #close
 conn.close()

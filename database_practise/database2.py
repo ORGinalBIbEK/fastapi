@@ -14,11 +14,11 @@ many_student=[(3,'Bibek',11,2322),
               (4,'Sam',22,2011),
               (5,'Shubham',23,2012),
               (6,'Sarthak',20,2011)]
-c.executemany("INSERT OR IGNORE INTO students VALUES WHERE age>= 18")
+c.executemany("INSERT OR IGNORE INTO students VALUES (?,?,?,?)",many_student)
 print("command executed succesfully")
 
 conn.commit()
-c.execute("SELECT * FROM students")
+c.execute("SELECT * FROM students WHERE age>18")
  # 1. Renamed to 'all_students' so we don't overwrite Python's built-in keywords
 all_students = c.fetchall()
 

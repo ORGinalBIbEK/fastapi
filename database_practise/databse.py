@@ -29,10 +29,16 @@ print("command executed succesfully")
 
 conn.commit()
 c.execute("SELECT * FROM students")
-list=c.fetchall()
-for list in list:   
-    print(list)
+ # 1. Renamed to 'all_students' so we don't overwrite Python's built-in keywords
+all_students = c.fetchall()
 
+print("\n--- Printing whole tuples ---")
+for all_students in all_students:   
+    print(all_students)
+
+print("\n--- Printing specific columns combined ---")
+for all_student in all_students:
+   print(f"{all_students[1]} {all_students[2]}")
 
 #close
 conn.close()

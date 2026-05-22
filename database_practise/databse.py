@@ -5,7 +5,9 @@ conn=sqlite3.connect('student.db')
 
 c=conn.cursor()
 
-
+many_student=[(3,'Bibek',11,2322),
+              (4,'Sam',22,2011),
+              (5,'Shubham',23,2012)]
 #create a table
 '''c.execute("""CREATE TABLE students(
     id   INTEGER PRIMARY KEY,
@@ -15,7 +17,8 @@ c=conn.cursor()
 )""")'''
 #NUL,INTERGER,REAL(DECIMAL),TEXT,BLOBL(IMAGES,MP3)
 #commit our commit
-c.execute("INSERT INTO students VALUES (01, 'John', 20, 2021)")
+c.executemany("INSERT INTO students VALUES (?,?,?,?)",many_student)
+print("command executed succesfully")
 conn.commit()
 
 #close

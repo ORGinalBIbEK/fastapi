@@ -15,7 +15,7 @@ many_student=[(3,'Bibek',11,2322),
 c.executemany("INSERT INTO students VALUES (?,?,?,?)",many_student)
 print("command executed succesfully")
 '''
-c.execute("""CREATE TABLE students(
+c.execute("""CREATE TABLE IF NOT EXISTS students(
     id   INTEGER PRIMARY KEY,
     name TEXT NOT NULL,
     age  INTEGER NOT NULL,
@@ -28,9 +28,10 @@ c.executemany("INSERT OR IGNORE INTO students VALUES (?,?,?,?)",many_student)
 print("command executed succesfully")
 
 conn.commit()
-
 c.execute("SELECT * FROM students")
-print(c.fetchall())
+list=c.fetchall()
+for list in list:   
+    print(list)
 
 
 #close

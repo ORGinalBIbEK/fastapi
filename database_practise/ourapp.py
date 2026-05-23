@@ -2,7 +2,7 @@ import database3
 
 
 #adding record to the table
-#database3.add_student(9,'Abiskar',19,2023)
+database3.add_student(9,'Abiskar',19,2023)
 
 
 #deleting a record from the table
@@ -14,5 +14,6 @@ stuff=[
 ]
 database3.many_student(stuff)
 #showing all the records
+database3.where_student(18,2020)
 database3.show_all()
 

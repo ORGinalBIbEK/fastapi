@@ -29,5 +29,12 @@ print("\n--- Printing specific columns combined ---")
 for all_student in all_students:
    print(f"{all_students[1]} {all_students[2]}")
 
+
+#quert the database- order by
+c.execute("SELECT * FROM students ORDER BY age")
+ordered_students=c.fetchall()
+print("\n--Ordered by age--")
+for ordered_students in ordered_students:
+    print(ordered_students)
 #close
 conn.close()

@@ -50,7 +50,7 @@ for conditional_student in conditional_student:
     print(conditional_student)
 
 #limiting the result:
-c.execute("SELECT age, *FROM students LIMIT 2 ")
+c.execute("SELECT age, * FROM students ORDER BY age LIMIT 2")
 limited_students=c.fetchall()
 print("\n--by condition--")
 for limited_students in limited_students:

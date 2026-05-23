@@ -34,6 +34,14 @@ def many_student(list):
     conn.commit()
     conn.close()
 
+#lookking with where
+def where_student(age,year):
+    conn=sqlite3.connect('student.txt')
+    c=conn.cursor()
+    c.execute("SELECT * FROM students WHERE age>18 AND year<2020")
+    conn.commit()
+    conn.close()
+
 def delete_student(id):
     conn=sqlite3.connect('student.txt')
     c=conn.cursor()

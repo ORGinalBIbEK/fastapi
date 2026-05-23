@@ -12,7 +12,24 @@ def show_all():
 
     for db_students in db_students:   
         print(db_students)
-
+        
     conn.commit()
 
+    conn.close()
+
+
+#add a new record to the table
+def add_student(id,name,age,year):
+    conn=sqlite3.connect('student.txt')
+    c=conn.cursor()
+    c.execute("INSERT OR IGNORE INTO students VALUES (?,?,?,?)",(id,name,age,year))
+    conn.commit()
+    conn.close()
+
+
+def delete_student(id):
+    conn=sqlite3.connect('student.txt')
+    c=conn.cursor()
+    c.execute(" DELETE from students WHERE id =(?)",id)
+    conn.commit()
     conn.close()

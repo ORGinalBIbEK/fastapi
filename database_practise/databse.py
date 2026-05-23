@@ -48,5 +48,13 @@ conditional_student=c.fetchall()
 print("\n--by condition--")
 for conditional_student in conditional_student:
     print(conditional_student)
+
+#limiting the result:
+c.execute("SELECT age, *FROM students LIMIT 2 ")
+limited_students=c.fetchall()
+print("\n--by condition--")
+for limited_students in limited_students:
+    print(limited_students)
+
 #close
 conn.close()

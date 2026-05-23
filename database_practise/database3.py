@@ -26,6 +26,13 @@ def add_student(id,name,age,year):
     conn.commit()
     conn.close()
 
+#add a many record to the table
+def many_student(list):
+    conn=sqlite3.connect('student.txt')
+    c=conn.cursor()
+    c.executemany("INSERT OR IGNORE INTO students VALUES (?,?,?,?)",(list))
+    conn.commit()
+    conn.close()
 
 def delete_student(id):
     conn=sqlite3.connect('student.txt')

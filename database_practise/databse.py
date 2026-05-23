@@ -15,8 +15,6 @@ c=conn.cursor()
 )""")'''
 #NUL,INTERGER,REAL(DECIMAL),TEXT,BLOBL(IMAGES,MP3)
 #commit our commit
-c.execute("INSERT INTO students VALUES (01, 'John', 20, 2021)")
-conn.commit()
 c.execute("SELECT * FROM students")
  # 1. Renamed to 'all_students' so we don't overwrite Python's built-in keywords
 all_students = c.fetchall()
@@ -36,5 +34,19 @@ ordered_students=c.fetchall()
 print("\n--Ordered by age--")
 for ordered_students in ordered_students:
     print(ordered_students)
+
+#query the database -disascending order
+c.execute("SELECT * FROM students ORDER BY age DESC")
+disordered_students=c.fetchall()
+print("\n--Ordered by age in descending order--")
+for disordered_students in disordered_students:
+    print(disordered_students)
+
+#query the database -and/or
+c.execute("SELECT * FROM students WHERE age>18 AND year<2020")
+conditional_student=c.fetchall()
+print("\n--by condition--")
+for conditional_student in conditional_student:
+    print(conditional_student)
 #close
 conn.close()

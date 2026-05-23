@@ -55,6 +55,9 @@ limited_students=c.fetchall()
 print("\n--by condition--")
 for limited_students in limited_students:
     print(limited_students)
-
-#close
+c.execute("SELECT age,*FROM students ORDER BY age DESC LIMIT 4")
+limited_students=c.fetchall()
+print("\n--by condition--")
+for limited_students in limited_students:
+    print(limited_students)
 conn.close()

@@ -1,3 +1,3 @@
-import database_practise.db as db
+import database3
 
-db.show_all()
+database3.show_all()
